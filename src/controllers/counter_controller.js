@@ -4,24 +4,23 @@ export default class extends Controller {
   static values = {
     count: Number,
   }
+  static targets = ['count']
 
   connect() {
-    console.log('Counter controller connected')
-  }
-
-  disconnect() {
-    console.log('Counter controller disconnected')
-  }
-
-  countValueChanged() {
-    this.element.innerHTML = `count is ${this.countValue}`
+    this.update()
   }
 
   increment() {
     this.countValue++
+    this.update()
   }
 
-  get name() {
-    return this.nameTarget.value
+  decrement() {
+    this.countValue--
+    this.update()
+  }
+
+  update() {
+    this.countTarget.textContent = this.countValue
   }
 }
