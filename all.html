@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stimulus</title>
+  <link rel="icon" href="https://unpkg.com/simple-icons@v9/icons/stimulus.svg" type="image/svg+xml" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script src="src/main.js" type="module"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto space-y-8">
+    <h1 class="text-3xl font-bold text-center mb-6">
+      <img src="https://unpkg.com/simple-icons@v9/icons/stimulus.svg" alt="Stimulus Icon" class="inline-block w-8 h-8 ml-2">
+      Stimulus
+    </h1>
+
+    <!-- 1. Basic Controller: Greeting -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-user mr-2"></i>Greeting</h2>
+      <p class="mb-2">Enter a name to see a greeting.</p>
+      <div data-controller="hello">
+        <input data-hello-target="name" type="text" class="border rounded p-2 w-full mb-2" placeholder="Enter your name"
+          data-action="input->hello#greet">
+        <p data-hello-target="output" class="text-lg font-medium"></p>
+      </div>
+    </div>
+
+    <!-- 2. Toggle Visibility -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-eye mr-2"></i>Toggle Visibility</h2>
+      <p class="mb-2">Click to show/hide content.</p>
+      <div data-controller="toggle" data-toggle-hidden-class="hidden">
+        <button data-action="click->toggle#toggle" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <i class="fas fa-toggle-on mr-1"></i>Toggle
+        </button>
+        <div data-toggle-target="content" class="hidden mt-2 p-4 bg-gray-200 rounded">
+          This content is toggled!
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Counter with Values -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-calculator mr-2"></i>Counter</h2>
+      <p class="mb-2">Increment or decrement a counter.</p>
+      <div data-controller="counter" data-counter-count-value="0">
+        <button data-action="click->counter#increment"
+          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          <i class="fas fa-plus mr-1"></i>Increment
+        </button>
+        <button data-action="click->counter#decrement" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          <i class="fas fa-minus mr-1"></i>Decrement
+        </button>
+        <span data-counter-target="count" class="text-lg font-medium ml-4">0</span>
+      </div>
+    </div>
+
+    <!-- 4. Dropdown Menu -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-bars mr-2"></i>Dropdown Menu</h2>
+      <p class="mb-2">Click to toggle a dropdown menu.</p>
+      <div data-controller="dropdown" data-dropdown-hidden-class="hidden">
+        <button data-action="click->dropdown#toggle" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <i class="fas fa-chevron-down mr-1"></i>Menu
+        </button>
+        <div data-dropdown-target="menu" class="hidden mt-2 bg-white shadow-lg rounded">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Option 1</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Option 2</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Option 3</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Form Validation -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-check-circle mr-2"></i>Form Validation</h2>
+      <p class="mb-2">Validate input length on the fly.</p>
+      <div data-controller="form">
+        <input data-form-target="input" type="text" class="border rounded p-2 w-full mb-2"
+          placeholder="Enter at least 3 characters" data-action="input->form#validate">
+        <p data-form-target="error" class="text-red-500 text-sm"></p>
+      </div>
+    </div>
+
+    <!-- 6. Dynamic Content Loading -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-cloud-download-alt mr-2"></i>Dynamic Content Loading</h2>
+      <p class="mb-2">Load content asynchronously from an API.</p>
+      <div data-controller="content-loader">
+        <button data-action="click->content-loader#load"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <i class="fas fa-sync mr-1"></i>Load Content
+        </button>
+        <p data-content-loader-target="output" class="mt-2"></p>
+      </div>
+    </div>
+
+    <!-- 7. Modal with Transitions -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-window-restore mr-2"></i>Modal</h2>
+      <p class="mb-2">Open/close a modal with transitions.</p>
+      <div data-controller="modal" data-modal-hidden-class="hidden" data-modal-transition-class="opacity-100 scale-100">
+        <button data-action="click->modal#open" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <i class="fas fa-external-link-alt mr-1"></i>Open Modal
+        </button>
+        <div data-modal-target="dialog"
+          class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-all duration-300 scale-95 opacity-0">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold">Modal Content</h3>
+            <p class="my-4">This is a modal dialog.</p>
+            <button data-action="click->modal#close" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+              <i class="fas fa-times mr-1"></i>Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Tabs -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-table mr-2"></i>Tabs</h2>
+      <p class="mb-2">Switch between tabbed content.</p>
+      <div data-controller="tabs" data-tabs-active-tab-class="bg-blue-500 text-white" data-tabs-hidden-class="hidden">
+        <div class="flex space-x-2 mb-4">
+          <button data-tabs-target="tab" data-action="click->tabs#switch" data-index="0" class="px-4 py-2 rounded">Tab
+            1</button>
+          <button data-tabs-target="tab" data-action="click->tabs#switch" data-index="1" class="px-4 py-2 rounded">Tab
+            2</button>
+          <button data-tabs-target="tab" data-action="click->tabs#switch" data-index="2" class="px-4 py-2 rounded">Tab
+            3</button>
+        </div>
+        <div data-tabs-target="panel" class="p-4 bg-gray-200 rounded">Content for Tab 1</div>
+        <div data-tabs-target="panel" class="p-4 bg-gray-200 rounded hidden">Content for Tab 2</div>
+        <div data-tabs-target="panel" class="p-4 bg-gray-200 rounded hidden">Content for Tab 3</div>
+      </div>
+    </div>
+
+    <!-- 9. Outlet: Controller Communication -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-exchange-alt mr-2"></i>Controller Communication</h2>
+      <p class="mb-2">Send message between controllers using outlets.</p>
+      <div data-controller="message" data-message-display-outlet="[data-controller='display']">
+        <input data-message-target="input" type="text" class="border rounded p-2 w-full mb-2"
+          placeholder="Type a message">
+        <button data-action="click->message#send" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <i class="fas fa-paper-plane mr-1"></i>Send
+        </button>
+      </div>
+      <div data-controller="display">
+        <p data-display-target="output" class="mt-2 text-lg font-medium"></p>
+      </div>
+    </div>
+
+    <!-- 10. Scroll Progress -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4"><i class="fas fa-scroll mr-2"></i>Scroll Progress</h2>
+      <p class="mb-2">Show scroll progress with a bar.</p>
+      <div data-controller="scroll-progress" data-action="scroll@window->scroll-progress#update">
+        <div data-scroll-progress-target="bar" class="fixed top-0 left-0 h-1 bg-blue-500" style="width: 0%"></div>
+        <div class="h-[2000px]"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!--
+  This file is now split into layout.html and sections/*.html.
+  Please use layout.html as the main entry point.
+-->

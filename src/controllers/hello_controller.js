@@ -33,15 +33,21 @@ export default class extends Controller {
   }
 
   _checkValidity() {
-    this.enabledValue = this.inputTarget.value.length > 0
+    if (this.hasInputTarget) {
+      this.enabledValue = this.inputTarget.value.length > 0
+    }
   }
 
   _enableButton() {
-    this.buttonTarget.removeAttribute("disabled")
+    if (this.hasButtonTarget) {
+      this.buttonTarget.removeAttribute("disabled")
+    }
   }
 
   _disableButton() {
-    this.buttonTarget.setAttribute("disabled", "")
+    if (this.hasButtonTarget) {
+      this.buttonTarget.setAttribute("disabled", "")
+    }
   }
 
   get name() {
