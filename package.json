@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node server.js",
+    "dev:static": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "NODE_ENV=production node server"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
@@ -17,7 +19,9 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@tailwindcss/vite": "^4.1.10",
+    "express": "^5.1.0",
     "stimulus-controller-resolver": "^3.1.0",
-    "tailwindcss": "^4.1.10"
+    "tailwindcss": "^4.1.10",
+    "vite-express": "^0.21.1"
   }
 }
