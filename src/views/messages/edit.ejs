@@ -1,0 +1,22 @@
+<!--
+  We are using the turbo-frame element here to replace the existing messages/show.ejs template when you edit a message.
+
+  When we send down a response with a turbo-frame with the same "id", @hotwire/turbo knows to replace that id in the DOM with the new response.
+-->
+<p>
+  This out of frame data will be ignored unless browser directly visit without DOM triggers http://localhost:3000/rooms/0/messages/1/edit
+</p>
+<p>
+  - When called this page by click Turbo drive will intercept and block the redirect request (all DOM triggered http requests).
+  <br />
+  - It will read the intercepted page and use it to replace the current page using turbo frame id if matched.
+  <br />
+  - If the id does not match, it will not show anything.
+  <br />
+</p>
+<turbo-frame id="message_frame_<%- message.id %>" target="_top">
+  <form action="/rooms/<%- message.roomId %>/messages/<%- message.id %>" method="POST">
+    <input name="content" type="text" value="<%- message.content %>" />
+    <button type="submit">Send</button>
+  </form>
+</turbo-frame>

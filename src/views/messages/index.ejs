@@ -1,0 +1,9 @@
+<h2>Current messages</h2>
+
+<div id="messages">
+  <% messages.forEach((message) => { %>
+    <%- include('./show', { message: message }); %>
+  <% }) %>
+</div>
+
+<%- include('./new') %>

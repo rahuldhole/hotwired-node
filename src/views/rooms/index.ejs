@@ -1,0 +1,9 @@
+<h3>Turbo examples:</h3>
+
+<div id="rooms">
+  <% rooms.forEach((room) => { %>
+    <div>
+      <a href="/rooms/<%- room.id %>/">View <%- room.name %></a>
+    </div>
+  <% }) %>
+</div>

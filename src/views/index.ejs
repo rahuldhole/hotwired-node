@@ -1,0 +1,13 @@
+<%- include('./templates/base-head') %>
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto space-y-8">
+    <h1 class="text-3xl font-bold">Node Hotwired App</h1>
+    <a href="/pages/stimulus/index.html" class="mt-4 text-blue-500 hover:underline">Stimulus examples</a>
+</div>
+</div>
+
+<%- include('./rooms/index', { rooms: rooms }); %>
+<div id="messages"></div>
+
+<%- include('./templates/base-footer') %>
